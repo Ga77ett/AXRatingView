@@ -4,6 +4,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AXRatingViewDelegate <NSObject>
+
+@optional
+- (void)ratingDidChange:(float)newValue;
+
+@end
+
 IB_DESIGNABLE
 @interface AXRatingView : UIControl {
   CALayer *_starMaskLayer;
@@ -19,5 +26,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable float value;
 @property (nonatomic) IBInspectable float stepInterval;
 @property (nonatomic) IBInspectable float minimumValue;
+
+@property (weak, nonatomic) id <AXRatingViewDelegate> delegate;
 
 @end

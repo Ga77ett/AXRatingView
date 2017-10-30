@@ -138,6 +138,10 @@
   if (_value != value) {
     _value = MIN(MAX(value, 0.0), _numberOfStar);
     [self setNeedsDisplay];
+      
+      if ([self.delegate respondsToSelector: @selector(ratingDidChange:)]) {
+          [self.delegate ratingDidChange:value];
+      }
   }
 }
 
